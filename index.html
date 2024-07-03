@@ -9,7 +9,7 @@
       //  https://github.com/vitejs/vite/issues/1984
 
       import RefreshRuntime from '/@react-refresh';
-      if (import.meta.env.DEV) {
+      if (!import.meta.env || !import.meta.env.PROD) {
         RefreshRuntime.injectIntoGlobalHook(window);
         window.$RefreshReg$ = () => {};
         window.$RefreshSig$ = () => (type) => type;
