@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SHOPLINE React Template</title>
     <script type="module">
-      // TODO: If you want to deploy to production please delete this compatibility code
-      // Ah, so you are serving the HTML over your Node server. Unfortunately because of this, Vite plugins (in this case @vitejs/plugin-react-refresh) won't be able to inject its HTML modifications.
       //  https://github.com/vitejs/vite/issues/1984
 
       import RefreshRuntime from '/@react-refresh';
-
-      RefreshRuntime.injectIntoGlobalHook(window);
-      window.$RefreshReg$ = () => {};
-      window.$RefreshSig$ = () => (type) => type;
-      window.__vite_plugin_react_preamble_installed__ = true;
+      if (import.meta.env.DEV) {
+        RefreshRuntime.injectIntoGlobalHook(window);
+        window.$RefreshReg$ = () => {};
+        window.$RefreshSig$ = () => (type) => type;
+        window.__vite_plugin_react_preamble_installed__ = true;
+      }
     </script>
   </head>
   <body>
